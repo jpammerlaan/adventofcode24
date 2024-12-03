@@ -1,9 +1,9 @@
 import os
-from utils import io
+from adventofcode24.utils import io
 from collections import Counter
 
 
-lines = read_input_file(day='01', output_type='list')
+lines = io.read_input_file(day='01', output_type='list')
 l1, l2 = zip(*[line.split('  ') for line in lines])
 l1, l2 = list(sorted(map(int, l1))), list(sorted(map(int, l2)))
 
