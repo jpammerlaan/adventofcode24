@@ -1,4 +1,3 @@
-import os
 from adventofcode24.utils import io
 from itertools import combinations
 
