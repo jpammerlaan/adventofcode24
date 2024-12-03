@@ -22,5 +22,5 @@ def part_two(reports):
     print(len(reports) - len(problem_reports) + sum(any(is_valid(r) for r in list(combinations(r, len(r) - 1))) for r in problem_reports))
 
 
-part_one(reports)
-part_two(reports)
+print(f'Part one : {part_one(reports)}')
+print(f'Part two: {part_two(reports)}')

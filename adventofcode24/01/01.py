@@ -20,5 +20,5 @@ def part_two(l1, l2):
     print(sum(similarity(x, cnt) for x in l1))
 
 
-part_one(l1, l2)
-part_two(l1, l2)
+print(f'Part one : {part_one(l1, l2)}')
+print(f'Part two: {part_two(l1, l2)}')
