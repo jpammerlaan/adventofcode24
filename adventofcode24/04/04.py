@@ -45,14 +45,12 @@ def part_two(field):
     # here we go, we need a different approach
     n = len(field)
     xmas = 0
-    tgt = (['M', 'S'], ['M', 'S'])
     for i in range(1, n-1):
         for j in range(1, n-1):
-            if field[i][j] != 'A':
-                continue
-            neighbors_diag = (sorted(field[i-1][j-1] + field[i+1][j+1]), sorted(field[i-1][j+1] + field[i+1][j-1]))
-            if neighbors_diag == tgt:
-                xmas += 1
+            if field[i][j] == 'A':
+                neighbors = field[i-1][j-1] + field[i+1][j+1], field[i-1][j+1] + field[i+1][j-1]
+                if neighbors in [('SM', 'SM'), ('MS', 'SM'), ('SM', 'MS'), ('MS', 'MS')]:
+                    xmas += 1
 
     return xmas
 
