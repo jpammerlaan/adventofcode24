@@ -31,5 +31,5 @@ def part_two(instructions):
     print(process_instructions(i))
 
 
-print(f'Part one : {part_one(instructions)}')
+print(f'Part one: {part_one(instructions)}')
 print(f'Part two: {part_two(instructions)}')
