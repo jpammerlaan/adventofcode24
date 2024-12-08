@@ -15,12 +15,7 @@ def read_input_file(day, output_type='string'):
 
 
 def parse_equations(equations):
-    parsed_equations = ()
-    for eq in equations:
-        t, numbers = eq.split(': ')
-        numbers = list(map(int, numbers.split(' ')))
-        parsed_equations += ((int(t), numbers),)
-    return parsed_equations
+    return [(int(t), [int(n) for n in numbers.split(' ')]) for eq in equations for t, numbers in [eq.split(': ')]]
 
 
 def mul(a, b):
