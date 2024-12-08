@@ -60,7 +60,6 @@ def part_two(rules, updates):
 
 
 rules = parse_rules(rules)
-print(rules)
 updates = parse_updates(updates)
 print(f'Part one: {part_one(rules, updates)}')
 print(f'Part two: {part_two(rules, updates)}')
