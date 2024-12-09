@@ -13,15 +13,12 @@ def read_input_file(day, output_type='string'):
         return input_str.split('\n')[:-1]  # drop empty last line
     raise ValueError('Unknown output_type {}. Expected string or list.'.format(output_type))
 
+
 def disk_map_to_mem(disk_map):
     mem = []
     for i in range(len(disk_map)):
         mem += [None if i % 2 == 1 else i//2] * disk_map[i]
     return mem
-
-
-def print_mem(mem):
-    print(' '.join('.' if m is None else str(m) for m in mem))
 
 
 def remap_mem(mem):
@@ -32,27 +29,25 @@ def remap_mem(mem):
             mem[first_free] = m
             mem[last_free] = None
         last_free -= 1
-        first_free = mem.index(None)
+        first_free = mem.index(None, first_free)
     return mem
 
 
 def remap_files(mem: List):
     first_free, f = mem.index(None), max(m for m in mem if m is not None)
+    M = len(mem)
+    start, end = M, M
+    mem_rev = mem[::-1]
     while f >= 0:
-        start = mem.index(f)
-        end = start
-        while True:
-            if end >= len(mem) or mem[end] != f:
-                break
-            end += 1
+        start = mem.index(f, 0, start)
+        end = M - mem_rev.index(f, M - end)
         length = end - start
         for i in range(first_free, start):
-            # try to move
-            if all(m is None for m in mem[i : i + length]): # if all are empty, we can move.
+            if all(m is None for m in mem[i : i + length]):
                 mem[i : i + length] = [f] * length
                 mem[start : start + length] = [None] * length
                 break
-        first_free = mem.index(None)
+        first_free = mem.index(None, first_free)
         f -= 1
     return mem
 
