@@ -1,6 +1,3 @@
-from collections import defaultdict
-from typing import List
-from itertools import combinations
 import os
 
 
@@ -33,7 +30,7 @@ def remap_mem(mem):
     return mem
 
 
-def remap_files(mem: List):
+def remap_files(mem):
     first_free, f = mem.index(None), max(m for m in mem if m is not None)
     M = len(mem)
     start, end = M, M
